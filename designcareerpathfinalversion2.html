@@ -101,27 +101,31 @@
 
     .quiz-result-sentence {
       font-size: 12pt;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .quiz-result-description {
       font-size: 12pt;
       max-width: 700px;
-      margin-top: 15px;
+      margin-top: 10px;
     }
 
-    /* Profile buttons and cards */
     .profile-buttons {
       margin-top: 10px;
       margin-bottom: 5px;
+    }
+
+    .profile-buttons span {
+      display: inline-block;
+      margin-bottom: 8px;
     }
 
     .profile-button {
       display: inline-block;
       margin-right: 8px;
       margin-bottom: 8px;
-      padding: 8px 12px;
-      border-radius: 16px;
+      padding: 6px 10px;
+      border-radius: 14px;
       border: 1px solid #48A548;
       cursor: pointer;
       font-size: 11pt;
@@ -143,9 +147,9 @@
 
     .profile-card {
       display: none;
-      margin-top: 15px;
-      padding: 12px 14px;
-      border-radius: 10px;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
       border: 1px solid #dddddd;
       background-color: #f9f9f9;
     }
@@ -159,32 +163,6 @@
       color: #48A548;
       margin-bottom: 4px;
       font-size: 13pt;
-    }
-
-    .profile-card-subtitle {
-      font-weight: 700;
-      margin-bottom: 6px;
-      font-size: 11pt;
-    }
-
-    .profile-card img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .profile-section-label {
-      font-weight: 700;
-      margin-top: 8px;
-      margin-bottom: 2px;
-    }
-
-    ul.profile-list {
-      padding-left: 18px;
-      margin-top: 2px;
-      margin-bottom: 6px;
     }
 
     h3, h2 {
@@ -228,7 +206,6 @@
     </div>
   </div>
 
-  <!-- Horizontal stripe kept for layout consistency (empty) -->
   <div class="col-xs-12 col-sm-12 col-md-12 col-xs-12 top-space pg4-text">
     <div class="row strip-h">
       <div class="col-sm-4 col-xs-4"></div>
@@ -299,73 +276,17 @@
   ];
 
   var profileText = {
-    A: {
-      title: "The Independent Creator",
-      traits: "Defining Traits: Visionary, Self-Directed, Adaptable, Expressive.",
-      intro: "You’re a natural-born creative with a strong sense of individuality and artistic direction. You thrive when you have the freedom to explore your own ideas and work on projects that align with your values or interests. Independence and creative control are important to you. You prefer to shape your own workflow, choose your clients, and push boundaries through experimentation.",
-      strengths: [
-        "Strong personal style and creative intuition.",
-        "Entrepreneurial mindset: confident in self-promotion and brand-building."
-      ],
-      challenges: [
-        "Balancing creativity with structure and deadlines.",
-        "Managing business or administrative tasks as a freelancer."
-      ],
-      paths: "Best-Fit Paths: Freelance Designer, Creative Entrepreneur, Jewelry or Product Designer, Artist/Founder, Illustrator.",
-      tip: "Designer Tip: Focus on refining your personal brand, pricing strategies, and client communication skills. Your independence is your greatest asset when paired with professionalism.",
-      imageAlt: "Independent creator working in a bright studio with sketchbooks and a laptop."
-    },
-    B: {
-      title: "The Strategic Designer",
-      traits: "Defining Traits: Organized, Collaborative, Goal-Oriented, Brand-Savvy.",
-      intro: "You excel in environments where creativity meets structure. You enjoy working within teams, communicating ideas clearly, and developing designs that serve a larger strategy. You see design not just as an art form, but as a language for solving business and marketing challenges. Your strength lies in connecting visual storytelling with purpose and impact.",
-      strengths: [
-        "Strong understanding of branding, communication and teamwork.",
-        "Strategic thinker who can align design with business goals.",
-        "Excellent collaborator and communicator."
-      ],
-      challenges: [
-        "Can become overly focused on approval or client direction.",
-        "Risk of losing personal creative voice in corporate settings."
-      ],
-      paths: "Best-Fit Paths: Brand Designer, Marketing Designer, Art Director, Agency Creative, Communication Designer.",
-      tip: "Designer Tip: Continue developing leadership, project management, and presentation skills. These will help you advance into senior or art director roles where strategy and creativity intersect.",
-      imageAlt: "Strategic designer presenting brand concepts to a small team in a meeting room."
-    },
-    C: {
-      title: "The Innovator",
-      traits: "Defining Traits: Curious, Analytical, Tech-Driven, Future-Focused.",
-      intro: "You’re energized by challenges that require experimentation and problem-solving. You enjoy exploring new tools, platforms, and technologies to create meaningful user experiences. You thrive on innovation and aren’t afraid to try new methods, whether that’s in UX/UI, motion graphics, or interactive design. You see design as a bridge between people and technology.",
-      strengths: [
-        "Technically skilled and quick to learn new tools.",
-        "Strong conceptual and user-centred thinking.",
-        "Comfortable with ambiguity and constant change."
-      ],
-      challenges: [
-        "May overlook visual polish or emotional storytelling.",
-        "Risk of burnout in fast-paced tech environments."
-      ],
-      paths: "Best-Fit Paths: UX/UI Designer, Product Designer, Motion Graphics Designer, Digital Strategist, Design Technologist.",
-      tip: "Design Tip: Balance your analytical mindset with emotional storytelling. Innovation is most impactful when it connects with human experience.",
-      imageAlt: "Innovative designer working on interface mockups and prototypes on multiple screens."
-    },
-    D: {
-      title: "The Craftsperson",
-      traits: "Defining Traits: Detail-Oriented, Patient, Disciplined, Timeless.",
-      intro: "You value precision, beauty, and mastery in your work. You’re driven by craftsmanship, such as creating designs that feel enduring rather than trendy. You find satisfaction in refining every detail and developing a distinct visual style. You prefer quality over quantity and appreciate the tactile or traditional side of design, even as technology evolves.",
-      strengths: [
-        "Exceptional attention to detail and visual harmony.",
-        "Deep appreciation for tradition, heritage and aesthetics.",
-        "Strong technical and production knowledge."
-      ],
-      challenges: [
-        "May resist fast-paced digital trends or rapid iteration.",
-        "Can struggle with perfectionism or over-editing."
-      ],
-      paths: "Best-Fit Paths: Print Designer, Editorial Designer, Illustrator, Jewelry or Product Designer, Typographer, Fashion Designer.",
-      tip: "Design Tip: Lean into your craftsmanship but remain open to digital tools. Blending traditional skill with modern presentation will keep your work timeless and relevant.",
-      imageAlt: "Craftsperson carefully arranging printed layouts and materials on a desk."
-    }
+    A: "Defining Traits: Visionary, Self-Directed, Adaptable, Expressive. You’re a natural-born creative with a strong sense of individuality and artistic direction. Independence and creative control are important to you. You prefer to shape your own workflow, choose your clients, and push boundaries through experimentation. Click the Next button to get the full profile details.",
+    B: "Defining Traits: Organized, Collaborative, Goal-Oriented, Brand-Savvy. You excel in environments where creativity meets structure. You see design not just as an art form, but as a language for solving business and marketing challenges. Your strength lies in connecting visual storytelling with purpose and impact. Click the Next button to get the full profile details.",
+    C: "Defining Traits: Curious, Analytical, Tech-Driven, Future-Focused. You’re energized by challenges that require experimentation and problem-solving. You thrive on innovation and aren’t afraid to try new methods, whether that’s in UX/UI, motion graphics, or interactive design. Click the Next button to get the full profile details.",
+    D: "Defining Traits: Detail-oriented, Patient, Disciplined, Timeless. You value precision, beauty, and mastery in your work. You’re driven by craftsmanship, such as creating designs that feel enduring rather than trendy. You prefer quality over quantity and appreciate the tactile or traditional side of design, even as technology evolves. Click the Next button to get the full profile details."
+  };
+
+  var profileTitle = {
+    A: "The Independent Creator",
+    B: "The Strategic Designer",
+    C: "The Innovator",
+    D: "The Craftsperson"
   };
 
   var answers = [];
@@ -424,15 +345,14 @@
 
     if (exactThreeLetters.length === 1) {
       var ltr = exactThreeLetters[0];
-      resultSentence = "You answered mostly " + ltr + "s. You are likely " + profileText[ltr].title + ".";
+      resultSentence = "You answered mostly " + ltr + "s. You are likely " + profileTitle[ltr] + ".";
       likelyProfiles = [ltr];
     } else {
       if (dominantLetters.length === 1) {
         var mainLetter = dominantLetters[0];
-        resultSentence = "You answered mostly " + mainLetter + "s. You are likely " + profileText[mainLetter].title + ".";
+        resultSentence = "You answered mostly " + mainLetter + "s. You are likely " + profileTitle[mainLetter] + ".";
         likelyProfiles = [mainLetter];
       } else {
-        // Combination
         var labelLetters = dominantLetters.slice();
         resultSentence = "You answered a mix of " + labelLetters.join(", ") + "s. You are likely a combination of profiles.";
         likelyProfiles = dominantLetters;
@@ -442,71 +362,36 @@
     var html = '<div class="quiz-result-title">Your Design Career Path</div>';
     html += '<div class="quiz-result-sentence">' + resultSentence + '</div>';
 
-    // Profile buttons
     html += '<div class="profile-buttons">';
-    html += '<span>Click a profile below to read more:</span><br>';
+    html += '<span>Click a profile below to read more:</span><br><br>';
     html += '<button type="button" class="profile-button" data-profile="A">The Independent Creator</button>';
     html += '<button type="button" class="profile-button" data-profile="B">The Strategic Designer</button>';
     html += '<button type="button" class="profile-button" data-profile="C">The Innovator</button>';
     html += '<button type="button" class="profile-button" data-profile="D">The Craftsperson</button>';
     html += '</div>';
 
-    // Profile cards
     html += '<div id="profile-card-A" class="profile-card">';
     html += '<div class="profile-card-title">The Independent Creator</div>';
-    html += '<img src="https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=800" alt="' + profileText.A.imageAlt + '">';
-    html += '<div class="profile-card-subtitle">' + profileText.A.traits + '</div>';
-    html += '<p>' + profileText.A.intro + '</p>';
-    html += '<div class="profile-section-label">Strengths:</div>';
-    html += '<ul class="profile-list"><li>' + profileText.A.strengths[0] + '</li><li>' + profileText.A.strengths[1] + '</li></ul>';
-    html += '<div class="profile-section-label">Challenges:</div>';
-    html += '<ul class="profile-list"><li>' + profileText.A.challenges[0] + '</li><li>' + profileText.A.challenges[1] + '</li></ul>';
-    html += '<p>' + profileText.A.paths + '</p>';
-    html += '<p>' + profileText.A.tip + '</p>';
+    html += '<p>' + profileText.A + '</p>';
     html += '</div>';
 
     html += '<div id="profile-card-B" class="profile-card">';
     html += '<div class="profile-card-title">The Strategic Designer</div>';
-    html += '<img src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800" alt="' + profileText.B.imageAlt + '">';
-    html += '<div class="profile-card-subtitle">' + profileText.B.traits + '</div>';
-    html += '<p>' + profileText.B.intro + '</p>';
-    html += '<div class="profile-section-label">Strengths:</div>';
-    html += '<ul class="profile-list"><li>' + profileText.B.strengths[0] + '</li><li>' + profileText.B.strengths[1] + '</li><li>' + profileText.B.strengths[2] + '</li></ul>';
-    html += '<div class="profile-section-label">Challenges:</div>';
-    html += '<ul class="profile-list"><li>' + profileText.B.challenges[0] + '</li><li>' + profileText.B.challenges[1] + '</li></ul>';
-    html += '<p>' + profileText.B.paths + '</p>';
-    html += '<p>' + profileText.B.tip + '</p>';
+    html += '<p>' + profileText.B + '</p>';
     html += '</div>';
 
     html += '<div id="profile-card-C" class="profile-card">';
     html += '<div class="profile-card-title">The Innovator</div>';
-    html += '<img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800" alt="' + profileText.C.imageAlt + '">';
-    html += '<div class="profile-card-subtitle">' + profileText.C.traits + '</div>';
-    html += '<p>' + profileText.C.intro + '</p>';
-    html += '<div class="profile-section-label">Strengths:</div>';
-    html += '<ul class="profile-list"><li>' + profileText.C.strengths[0] + '</li><li>' + profileText.C.strengths[1] + '</li><li>' + profileText.C.strengths[2] + '</li></ul>';
-    html += '<div class="profile-section-label">Challenges:</div>';
-    html += '<ul class="profile-list"><li>' + profileText.C.challenges[0] + '</li><li>' + profileText.C.challenges[1] + '</li></ul>';
-    html += '<p>' + profileText.C.paths + '</p>';
-    html += '<p>' + profileText.C.tip + '</p>';
+    html += '<p>' + profileText.C + '</p>';
     html += '</div>';
 
     html += '<div id="profile-card-D" class="profile-card">';
     html += '<div class="profile-card-title">The Craftsperson</div>';
-    html += '<img src="https://images.pexels.com/photos/3965555/pexels-photo-3965555.jpeg?auto=compress&cs=tinysrgb&w=800" alt="' + profileText.D.imageAlt + '">';
-    html += '<div class="profile-card-subtitle">' + profileText.D.traits + '</div>';
-    html += '<p>' + profileText.D.intro + '</p>';
-    html += '<div class="profile-section-label">Strengths:</div>';
-    html += '<ul class="profile-list"><li>' + profileText.D.strengths[0] + '</li><li>' + profileText.D.strengths[1] + '</li><li>' + profileText.D.strengths[2] + '</li></ul>';
-    html += '<div class="profile-section-label">Challenges:</div>';
-    html += '<ul class="profile-list"><li>' + profileText.D.challenges[0] + '</li><li>' + profileText.D.challenges[1] + '</li></ul>';
-    html += '<p>' + profileText.D.paths + '</p>';
-    html += '<p>' + profileText.D.tip + '</p>';
+    html += '<p>' + profileText.D + '</p>';
     html += '</div>';
 
     contentEl.innerHTML = html;
 
-    // Button behavior
     var buttons = contentEl.querySelectorAll('.profile-button');
     var cards = {
       A: document.getElementById('profile-card-A'),
@@ -536,15 +421,14 @@
     }
 
     for (var i2 = 0; i2 < buttons.length; i2++) {
-      buttons[i2].addEventListener('click', function(e) {
+      buttons[i2].addEventListener('click', function() {
         var letter = this.getAttribute('data-profile');
         showProfile(letter);
       });
     }
 
-    // Auto-open the most likely profile (or first of combination)
-    if (dominantLetters.length && dominantLetters[0]) {
-      showProfile(dominantLetters[0]);
+    if (likelyProfiles.length && likelyProfiles[0]) {
+      showProfile(likelyProfiles[0]);
     }
   }
 
