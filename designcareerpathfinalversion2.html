@@ -3,376 +3,478 @@
 <head>
   <meta charset="UTF-8">
   <title>Design Career Path</title>
+  <!-- Lato font -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
   <style>
     body {
+      font-family: 'Lato', Arial, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
       margin: 0;
       padding: 0;
-      background: #FFFFFF;
-      font-family: "Lato", "Lucida Grande", Tahoma, sans-serif; /* Lato stack example [web:5] */
-      color: #000000;
     }
-    .quiz-wrapper {
-      max-width: 700px;
-      margin: 40px auto;
+
+    .container-fluid {
       padding: 20px;
-      box-sizing: border-box;
     }
-    h1 {
-      text-align: center;
-      color: #48A548;
-      font-size: 16pt;
-      margin-bottom: 10px;
+
+    /* Outer wrapper constrained to Canvas content area and left-aligned */
+    .quiz-wrapper {
+      max-width: 800px;
+      margin: 0;            /* left-aligned */
     }
-    .instructions {
+
+    /* Title and instructions */
+    .quiz-title {
       text-align: left;
+      font-size: 16pt;
+      color: #48A548;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .quiz-instructions {
+      text-align: left;
+      font-size: 12pt;
       margin-bottom: 30px;
-      line-height: 1.4;
     }
-    .question-page {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
+
+    /* Fixed-height question area so content never moves vertically */
+    .quiz-content-area {
       position: relative;
+      min-height: 260px; /* adjust if Canvas font size shifts things */
     }
-    .question-page.active {
+
+    /* Question pages */
+    .quiz-page {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .quiz-page.active {
+      display: block;
       opacity: 1;
-      pointer-events: auto;
     }
-    .question-text {
-      font-weight: bold;
+
+    .quiz-question {
+      font-size: 14pt;
       margin-bottom: 20px;
+      color: #48A548;
+      font-weight: 700;
     }
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+
+    .quiz-options {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
-    .option {
+
+    .quiz-option {
       display: flex;
       align-items: center;
+      margin-bottom: 12px;
       cursor: pointer;
-      padding: 6px 4px;
-      border-radius: 4px;
+      font-size: 12pt;
     }
-    .option-circle {
-      width: 18px;
-      height: 18px;
+
+    .quiz-option-circle {
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      border: 2px solid #000000;
+      border: 2px solid #48A548;
       margin-right: 10px;
-      box-sizing: border-box;
       transition: background-color 0.2s ease, border-color 0.2s ease;
+      box-sizing: border-box;
     }
-    .option-text {
-      flex: 1;
-    }
-    .option:hover .option-circle {
+
+    .quiz-option:hover .quiz-option-circle {
       background-color: #5AC8DA;
       border-color: #5AC8DA;
     }
-    .result-page {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s ease;
+
+    .quiz-option-text {
+      flex: 1;
     }
-    .result-page.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .result-title {
-      color: #48A548;
-      font-size: 16pt;
-      text-align: center;
-      margin-bottom: 16px;
-    }
-    .result-text {
-      line-height: 1.5;
+
+    /* Result styles */
+    .quiz-result {
       text-align: left;
+      margin-top: 0;
+    }
+
+    .quiz-result-title {
+      font-size: 16pt;
+      color: #48A548;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .quiz-result-description {
+      font-size: 12pt;
+      max-width: 700px;
+    }
+
+    /* Original content area tweaks (left-aligned) */
+    h3, h2 {
+      color: #48A548;
+      font-family: 'Lato', Arial, sans-serif;
+      text-align: left;
+    }
+
+    p {
+      font-family: 'Lato', Arial, sans-serif;
+      text-align: left;
+    }
+
+    .row::after {
+      content: "";
+      display: table;
+      clear: both;
     }
   </style>
 </head>
 <body>
+<!-- begin CONTENT HEADER-->
+<div class="container-fluid">
   <div class="quiz-wrapper">
-    <h1>Design Career Path</h1>
-    <div class="instructions">
-      Complete the following Design Career Path Quiz to inform your interests and persona as a graphic designer. It is a helpful place to start!<br><br>
-      This quiz has 6 questions. Click on the option that best fits you; each question will fade into the next one automatically.
-    </div>
-
-    <!-- Question 1 -->
-    <div class="question-page active" data-question="1">
-      <div class="question-text">
-        1. When you start a new project, what excites you the most?
-      </div>
-      <div class="options">
-        <div class="option" data-answer="A">
-          <div class="option-circle"></div>
-          <div class="option-text">a) Having full control to explore ideas freely.</div>
-        </div>
-        <div class="option" data-answer="B">
-          <div class="option-circle"></div>
-          <div class="option-text">b) Collaborating with a team to meet a clear goal.</div>
-        </div>
-        <div class="option" data-answer="C">
-          <div class="option-circle"></div>
-          <div class="option-text">c) Experimenting with new tools or technology.</div>
-        </div>
-        <div class="option" data-answer="D">
-          <div class="option-circle"></div>
-          <div class="option-text">d) Perfecting every detail until it feels timeless.</div>
+    <!-- Title and instructions -->
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="quiz-title">Design Career Path</div>
+        <div class="quiz-instructions">
+          Complete the following Design Career Path Quiz to inform your interests and persona as a graphic designer. It is a helpful place to start! This quiz has 6 questions. Click on the option that best fits you; each question will fade into the next one automatically.
         </div>
       </div>
     </div>
 
-    <!-- Question 2 -->
-    <div class="question-page" data-question="2">
-      <div class="question-text">
-        2. How do you feel about working with clients?
-      </div>
-      <div class="options">
-        <div class="option" data-answer="A">
-          <div class="option-circle"></div>
-          <div class="option-text">a) I like being selective and choosing who I work with.</div>
-        </div>
-        <div class="option" data-answer="B">
-          <div class="option-circle"></div>
-          <div class="option-text">b) I enjoy building long-term relationships with clients or companies.</div>
-        </div>
-        <div class="option" data-answer="C">
-          <div class="option-circle"></div>
-          <div class="option-text">c) I'd prefer to design for users, not big companies.</div>
-        </div>
-        <div class="option" data-answer="D">
-          <div class="option-circle"></div>
-          <div class="option-text">d) I love clients who appreciate craftsmanship and patience.</div>
+    <!-- Fixed-position quiz area -->
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="quiz-content-area">
+
+          <!-- Question 1 -->
+          <div class="quiz-page active" data-question="1">
+            <div class="quiz-question">
+              1. When you start a new project, what excites you the most?
+            </div>
+            <ul class="quiz-options">
+              <li class="quiz-option" data-answer="A">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">a) Having full control to explore ideas freely.</div>
+              </li>
+              <li class="quiz-option" data-answer="B">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">b) Collaborating with a team to meet a clear goal.</div>
+              </li>
+              <li class="quiz-option" data-answer="C">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">c) Experimenting with new tools or technology.</div>
+              </li>
+              <li class="quiz-option" data-answer="D">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">d) Perfecting every detail until it feels timeless.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="quiz-page" data-question="2">
+            <div class="quiz-question">
+              2. How do you feel about working with clients?
+            </div>
+            <ul class="quiz-options">
+              <li class="quiz-option" data-answer="A">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">a) I like being selective and choosing who I work with.</div>
+              </li>
+              <li class="quiz-option" data-answer="B">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">b) I enjoy building long-term relationships with clients or companies.</div>
+              </li>
+              <li class="quiz-option" data-answer="C">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">c) I'd prefer to design for users, not big companies.</div>
+              </li>
+              <li class="quiz-option" data-answer="D">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">d) I love clients who appreciate craftsmanship and patience.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="quiz-page" data-question="3">
+            <div class="quiz-question">
+              3. What best describes your work style?
+            </div>
+            <ul class="quiz-options">
+              <li class="quiz-option" data-answer="A">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">a) Intuitive, spontaneous and flexible.</div>
+              </li>
+              <li class="quiz-option" data-answer="B">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">b) Structured, goal-oriented, and collaborative.</div>
+              </li>
+              <li class="quiz-option" data-answer="C">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">c) Analytical, experimental, and curious.</div>
+              </li>
+              <li class="quiz-option" data-answer="D">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">d) Focused, disciplined, and perfectionistic.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="quiz-page" data-question="4">
+            <div class="quiz-question">
+              4. How do you handle risk and stability?
+            </div>
+            <ul class="quiz-options">
+              <li class="quiz-option" data-answer="A">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">a) I'll take risks if it means creative freedom.</div>
+              </li>
+              <li class="quiz-option" data-answer="B">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">b) I like a steady salary with occasional challenges.</div>
+              </li>
+              <li class="quiz-option" data-answer="C">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">c) I don't mind uncertainty, innovation requires it.</div>
+              </li>
+              <li class="quiz-option" data-answer="D">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">d) I prefer predictable work where I can refine my expertise.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="quiz-page" data-question="5">
+            <div class="quiz-question">
+              5. What motivates you most as a designer?
+            </div>
+            <ul class="quiz-options">
+              <li class="quiz-option" data-answer="A">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">a) Independence and personal expression.</div>
+              </li>
+              <li class="quiz-option" data-answer="B">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">b) Team success and recognition.</div>
+              </li>
+              <li class="quiz-option" data-answer="C">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">c) Solving real problems through design.</div>
+              </li>
+              <li class="quiz-option" data-answer="D">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">d) Crafting something beautiful and lasting.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Question 6 -->
+          <div class="quiz-page" data-question="6">
+            <div class="quiz-question">
+              6. Where do you picture yourself thriving in 5 years?
+            </div>
+            <ul class="quiz-options">
+              <li class="quiz-option" data-answer="A">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">a) Running my own creative studio or freelance business.</div>
+              </li>
+              <li class="quiz-option" data-answer="B">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">b) Working full-time at a branding or marketing agency.</div>
+              </li>
+              <li class="quiz-option" data-answer="C">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">c) Designing user experiences in tech or startups.</div>
+              </li>
+              <li class="quiz-option" data-answer="D">
+                <div class="quiz-option-circle"></div>
+                <div class="quiz-option-text">d) Creating for print, editorial or artisan-based industries.</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Result Page -->
+          <div class="quiz-page" data-question="result">
+            <div class="quiz-result">
+              <div class="quiz-result-title">Your Design Career Path</div>
+              <div class="quiz-result-description" id="quiz-result-text">
+                <!-- Result text will be injected here -->
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
 
-    <!-- Question 3 -->
-    <div class="question-page" data-question="3">
-      <div class="question-text">
-        3. What best describes your work style?
+    <!-- Optional original content below quiz, still within frame -->
+    <div class="row" style="margin-top:40px;">
+      <div class="col-xs-12">
+        <h3>Document Heading</h3>
+        <p>This is body text.</p>
+        <h2>Subheading</h2>
+        <p>This is body text.</p>
       </div>
-      <div class="options">
-        <div class="option" data-answer="A">
-          <div class="option-circle"></div>
-          <div class="option-text">a) Intuitive, spontaneous and flexible.</div>
-        </div>
-        <div class="option" data-answer="B">
-          <div class="option-circle"></div>
-          <div class="option-text">b) Structured, goal-oriented, and collaborative.</div>
-        </div>
-        <div class="option" data-answer="C">
-          <div class="option-circle"></div>
-          <div class="option-text">c) Analytical, experimental, and curious.</div>
-        </div>
-        <div class="option" data-answer="D">
-          <div class="option-circle"></div>
-          <div class="option-text">d) Focused, disciplined, and perfectionistic.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Question 4 -->
-    <div class="question-page" data-question="4">
-      <div class="question-text">
-        4. How do you handle risk and stability?
-      </div>
-      <div class="options">
-        <div class="option" data-answer="A">
-          <div class="option-circle"></div>
-          <div class="option-text">a) I'll take risks if it means creative freedom.</div>
-        </div>
-        <div class="option" data-answer="B">
-          <div class="option-circle"></div>
-          <div class="option-text">b) I like a steady salary with occasional challenges.</div>
-        </div>
-        <div class="option" data-answer="C">
-          <div class="option-circle"></div>
-          <div class="option-text">c) I don't mind uncertainty, innovation requires it.</div>
-        </div>
-        <div class="option" data-answer="D">
-          <div class="option-circle"></div>
-          <div class="option-text">d) I prefer predictable work where I can refine my expertise.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Question 5 -->
-    <div class="question-page" data-question="5">
-      <div class="question-text">
-        5. What motivates you most as a designer?
-      </div>
-      <div class="options">
-        <div class="option" data-answer="A">
-          <div class="option-circle"></div>
-          <div class="option-text">a) Independence and personal expression.</div>
-        </div>
-        <div class="option" data-answer="B">
-          <div class="option-circle"></div>
-          <div class="option-text">b) Team success and recognition.</div>
-        </div>
-        <div class="option" data-answer="C">
-          <div class="option-circle"></div>
-          <div class="option-text">c) Solving real problems through design.</div>
-        </div>
-        <div class="option" data-answer="D">
-          <div class="option-circle"></div>
-          <div class="option-text">d) Crafting something beautiful and lasting.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Question 6 -->
-    <div class="question-page" data-question="6">
-      <div class="question-text">
-        6. Where do you picture yourself thriving in 5 years?
-      </div>
-      <div class="options">
-        <div class="option" data-answer="A">
-          <div class="option-circle"></div>
-          <div class="option-text">a) Running my own creative studio or freelance business.</div>
-        </div>
-        <div class="option" data-answer="B">
-          <div class="option-circle"></div>
-          <div class="option-text">b) Working full-time at a branding or marketing agency.</div>
-        </div>
-        <div class="option" data-answer="C">
-          <div class="option-circle"></div>
-          <div class="option-text">c) Designing user experiences in tech or startups.</div>
-        </div>
-        <div class="option" data-answer="D">
-          <div class="option-circle"></div>
-          <div class="option-text">d) Creating for print, editorial or artisan-based industries.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Result Page -->
-    <div class="result-page" id="resultPage">
-      <div class="result-title">Your Design Career Path</div>
-      <div class="result-text" id="resultText"></div>
     </div>
   </div>
 
-  <script>
-    (function() {
-      var currentIndex = 0;
-      var pages = document.querySelectorAll('.question-page');
-      var totalQuestions = pages.length;
-      var counts = { A: 0, B: 0, C: 0, D: 0 };
+  <!-- begin Horizontal Tri-Colour Stripe-->
+  <div class="col-xs-12 col-sm-12 col-md-12 col-xs-12 top-space pg4-text">
+    <div class="row strip-h">
+      <div class="col-sm-4 col-xs-4"></div>
+      <div class="col-sm-4 col-xs-4"></div>
+      <div class="col-sm-4 col-xs-4"></div>
+    </div>
+  </div>
+</div>
+<!-- end Horizontal Tri-Colour Stripe-->
+<p></p>
 
-      function showPage(index) {
-        for (var i = 0; i < pages.length; i++) {
-          if (i === index) {
-            pages[i].classList.add('active');
-          } else {
-            pages[i].classList.remove('active');
-          }
-        }
-      }
+<!-- begin Footer scripts and closing tags-->
+<p>
+<script>
+  (function() {
+    var answers = [];
+    var pages = [];
+    var resultTextEl;
 
-      function showResult() {
-        for (var i = 0; i < pages.length; i++) {
-          pages[i].classList.remove('active');
-        }
-        var resultPage = document.getElementById('resultPage');
-        var resultText = document.getElementById('resultText');
-        resultPage.classList.add('active');
+    function initQuiz() {
+      pages = Array.prototype.slice.call(document.querySelectorAll('.quiz-page'));
+      resultTextEl = document.getElementById('quiz-result-text');
 
-        var messages = {
-          A: "The Independent Creator – visionary and self-directed.",
-          B: "The Strategic Designer – organized and goal-oriented.",
-          C: "The Innovator – analytical and tech-driven.",
-          D: "The Craftsperson – detail-oriented and disciplined."
-        };
-
-        var dominantLetters = [];
-        for (var key in counts) {
-          if (counts.hasOwnProperty(key)) {
-            if (counts[key] === 3) {
-              dominantLetters.push(key);
-            }
-          }
-        }
-
-        var finalMessage = "";
-
-        if (dominantLetters.length === 1) {
-          var letter = dominantLetters[0];
-          finalMessage = "You are mostly " + letter + "s: " + messages[letter];
-        } else if (dominantLetters.length > 1) {
-          // Combination profile
-          var parts = [];
-          for (var j = 0; j < dominantLetters.length; j++) {
-            var l = dominantLetters[j];
-            parts.push(messages[l]);
-          }
-          finalMessage = "You are a combination of: " + parts.join(" ");
-        } else {
-          // Fallback: pick the highest count
-          var maxCount = 0;
-          var maxLetters = [];
-          for (var k in counts) {
-            if (counts.hasOwnProperty(k)) {
-              if (counts[k] > maxCount) {
-                maxCount = counts[k];
-                maxLetters = [k];
-              } else if (counts[k] === maxCount && maxCount > 0) {
-                maxLetters.push(k);
-              }
-            }
-          }
-          if (maxLetters.length === 1) {
-            var ml = maxLetters[0];
-            finalMessage = "You lean towards " + ml + ": " + messages[ml];
-          } else if (maxLetters.length > 1) {
-            var comboParts = [];
-            for (var t = 0; t < maxLetters.length; t++) {
-              comboParts.push(messages[maxLetters[t]]);
-            }
-            finalMessage = "You show a mix of: " + comboParts.join(" ");
-          } else {
-            finalMessage = "Your responses are balanced across all paths.";
-          }
-        }
-
-        resultText.textContent = finalMessage;
-      }
-
-      function handleOptionClick(answerLetter) {
-        counts[answerLetter] += 1;
-        var oldIndex = currentIndex;
-        currentIndex++;
-
-        if (currentIndex < totalQuestions) {
-          // fade out current and fade in next
-          pages[oldIndex].classList.remove('active');
-          // Small timeout helps ensure transition feels sequential
-          setTimeout(function() {
-            showPage(currentIndex);
-          }, 50);
-        } else {
-          pages[oldIndex].classList.remove('active');
-          setTimeout(function() {
-            showResult();
-          }, 200);
-        }
-      }
-
-      // Attach listeners
-      var optionElements = document.querySelectorAll('.option');
+      var optionElements = document.querySelectorAll('.quiz-option');
       for (var i = 0; i < optionElements.length; i++) {
-        optionElements[i].addEventListener('click', function() {
-          var answer = this.getAttribute('data-answer');
-          handleOptionClick(answer);
-        });
+        optionElements[i].addEventListener('click', onOptionClick);
+      }
+    }
+
+    function onOptionClick(event) {
+      var option = event.currentTarget;
+      var answer = option.getAttribute('data-answer');
+
+      var pageEl = option.closest('.quiz-page');
+      var qNum = pageEl.getAttribute('data-question');
+      if (qNum !== 'result') {
+        var qIndex = parseInt(qNum, 10) - 1;
+        answers[qIndex] = answer;
+        goToNextPage(qIndex);
+      }
+    }
+
+    function goToNextPage(qIndex) {
+      var currentPage = pages[qIndex];
+      var nextPage;
+
+      if (qIndex < 5) {
+        nextPage = pages[qIndex + 1];
+        transitionPages(currentPage, nextPage);
+      } else {
+        computeAndShowResult();
+        nextPage = document.querySelector('.quiz-page[data-question="result"]');
+        transitionPages(currentPage, nextPage);
+      }
+    }
+
+    function transitionPages(fromPage, toPage) {
+      if (!fromPage || !toPage) return;
+
+      fromPage.style.opacity = '0';
+      setTimeout(function() {
+        fromPage.classList.remove('active');
+        toPage.classList.add('active');
+        void toPage.offsetWidth;
+        toPage.style.opacity = '1';
+      }, 500);
+    }
+
+    function computeAndShowResult() {
+      var counts = { A: 0, B: 0, C: 0, D: 0 };
+      for (var i = 0; i < answers.length; i++) {
+        var ans = answers[i];
+        if (counts.hasOwnProperty(ans)) {
+          counts[ans]++;
+        }
       }
 
-      // Initialize first page
-      showPage(0);
-    })();
-  </script>
+      var resultMap = {
+        A: "The Independent Creator – Visionary and Self-Directed",
+        B: "The Strategic Designer – Organized and Goal-Oriented",
+        C: "The Innovator – Analytical and Tech-Driven",
+        D: "The Craftsperson – Detail-Oriented and Disciplined"
+      };
+
+      var dominantLetters = [];
+      var maxCount = 0;
+      for (var key in counts) {
+        if (counts.hasOwnProperty(key)) {
+          if (counts[key] > maxCount) {
+            maxCount = counts[key];
+            dominantLetters = [key];
+          } else if (counts[key] === maxCount && counts[key] > 0) {
+            dominantLetters.push(key);
+          }
+        }
+      }
+
+      var resultMessage = "";
+
+      var exactThreeLetters = [];
+      for (var letter in counts) {
+        if (counts.hasOwnProperty(letter) && counts[letter] === 3) {
+          exactThreeLetters.push(letter);
+        }
+      }
+
+      if (exactThreeLetters.length === 1) {
+        var letter = exactThreeLetters[0];
+        resultMessage = "You answered mostly " + letter + "s. " + resultMap[letter] + ".";
+      } else {
+        if (dominantLetters.length === 1) {
+          var mainLetter = dominantLetters[0];
+          resultMessage = "You answered mostly " + mainLetter + "s. " + resultMap[mainLetter] + ".";
+        } else {
+          var comboDescriptions = [];
+          for (var i2 = 0; i2 < dominantLetters.length; i2++) {
+            var l = dominantLetters[i2];
+            comboDescriptions.push(resultMap[l]);
+          }
+          resultMessage = "You are a combination of: " + comboDescriptions.join("; ") + ".";
+        }
+      }
+
+      if (resultTextEl) {
+        resultTextEl.textContent = resultMessage;
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initQuiz);
+    } else {
+      initQuiz();
+    }
+  })();
+</script>
+</p>
+<p>
+<script>
+// Empty: keeping file self-contained, no external JS dependencies.
+</script>
+</p>
+<!-- end Footer scripts and closing tags-->
 </body>
 </html>
+
